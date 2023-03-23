@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="base_offset_extra_small">6dp</dimen>
+    <dimen name="base_offset_small">8dp</dimen>
+    <dimen name="base_offset">16dp</dimen>
+    <dimen name="app_rating_view_max_width">400dp</dimen>
+    <dimen name="card_sound_width">100sp</dimen>
+    <dimen name="card_video_width">300dp</dimen>
+    <dimen name="fab_mic_size">64dp</dimen>
+    <dimen name="fab_mic_margin">16dp</dimen>
+    <dimen name="title2size">24sp</dimen>
+    <dimen name="bodySize">18sp</dimen>
+    <dimen name="tab_layout_elevation">8dp</dimen>
+
+    <dimen name="fab_cradle_margin">5dp</dimen>
+    <dimen name="fab_cradle_rounded_corner_radius">8dp</dimen>
+    <dimen name="ab_cradle_vertical_offset">0dp</dimen>
+
+    <dimen name="ad_item_in_vertical_horizontal_offset">2dp</dimen>
+</resources>

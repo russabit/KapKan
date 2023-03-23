@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main_menu_first"
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_first"
+        android:title="@string/main_menu_tab_first" />
+    <item
+        android:id="@+id/main_menu_second"
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_second"
+        android:title="@string/main_menu_tab_second" />
+    <item
+        android:id="@+id/main_menu_third"
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_third"
+        android:title="@string/main_menu_tab_third" />
+</menu>
