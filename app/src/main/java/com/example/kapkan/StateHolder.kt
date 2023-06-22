@@ -37,7 +37,7 @@ class StateHolder {
     }
 
     private fun getRandomHanja(): Data.HanjaRecord {
-        val list = data.hanja12
+        val list = data.hanjaNew
         return list[Random.nextInt(0, list.size)]
     }
 }
