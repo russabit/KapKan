@@ -155,7 +155,6 @@ class MainActivity : AppCompatActivity() {
             true
         } else {
             widgets.answerEditText.error = "that's not right!"
-
             false
         }
     }
