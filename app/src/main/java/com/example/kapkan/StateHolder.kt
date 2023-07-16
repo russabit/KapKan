@@ -5,6 +5,13 @@ import kotlin.random.Random
 class StateHolder {
     private val data = Data()
 
+    var hintState = HintState.NOT_SHOWN
+    enum class HintState { NOT_SHOWN, SHOWN_HUNDOK, SHOWN_BOTH }
+    enum class Type { HANJA, NATIVE_NUMBERS }
+
+    var numberOfWins = 0
+    var state = Type.HANJA
+
     var number = getRandomNumber()
     var hanja = getRandomHanja()
 

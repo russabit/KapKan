@@ -117,7 +117,6 @@ class Data {
         HanjaRecord("品", "품"),
         HanjaRecord("金", "금"),
         HanjaRecord("李", "이"),
-        HanjaRecord("李", "이"),
         HanjaRecord("正", "정"),
         HanjaRecord("無", "무"),
         HanjaRecord("不", "부"),
