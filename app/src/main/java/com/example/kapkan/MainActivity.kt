@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         initTextView(stateHolder.number)
         initTextView(stateHolder.hanja)
 
-        widgets.errorIcon.setOnClickListener { errorIconImageViewClickListener() }
+        widgets.answerEditText.setErrorIconOnClickListener {errorIconClickListener()}
 
         widgets.fabButton.setOnClickListener {
             fabButtonClickListener()
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun errorIconImageViewClickListener() {
+    private fun errorIconClickListener() {
         Toast.makeText(this, stateHolder.hanja.koreanSound, Toast.LENGTH_SHORT).show()
     }
 
@@ -61,8 +61,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun onSuccessfulHanjaAnswer() {
         stateHolder.updateHanja()
-
-        widgets.errorIcon.visibility = View.GONE
 
         stateHolder.hintState = StateHolder.HintState.NOT_SHOWN
         widgets.hundokTextView.visibility = View.GONE
@@ -157,8 +155,7 @@ class MainActivity : AppCompatActivity() {
             true
         } else {
             widgets.answerEditText.error = "that's not right!"
-            widgets.answerEditText.setErrorIconDrawable(R.drawable.ic_error)
-            widgets.errorIcon.visibility = View.VISIBLE
+
             false
         }
     }
