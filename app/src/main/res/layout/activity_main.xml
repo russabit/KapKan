@@ -64,6 +64,15 @@
             android:hint="Write the answer here"
             android:inputType="text"
             />
+
+        <ImageView
+            android:id="@+id/errorIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_error"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

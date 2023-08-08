@@ -2,12 +2,9 @@ package com.example.kapkan
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         initTextView(stateHolder.number)
         initTextView(stateHolder.hanja)
 
-        widgets.hanjaTextView.setOnClickListener { hanjaTextViewClickListener() }
+        widgets.errorIcon.setOnClickListener { errorIconImageViewClickListener() }
 
         widgets.fabButton.setOnClickListener {
             fabButtonClickListener()
@@ -34,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun hanjaTextViewClickListener() {
+    private fun errorIconImageViewClickListener() {
         Toast.makeText(this, stateHolder.hanja.koreanSound, Toast.LENGTH_SHORT).show()
     }
 
@@ -64,6 +61,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun onSuccessfulHanjaAnswer() {
         stateHolder.updateHanja()
+
+        widgets.errorIcon.visibility = View.GONE
 
         stateHolder.hintState = StateHolder.HintState.NOT_SHOWN
         widgets.hundokTextView.visibility = View.GONE
@@ -158,6 +157,8 @@ class MainActivity : AppCompatActivity() {
             true
         } else {
             widgets.answerEditText.error = "that's not right!"
+            widgets.answerEditText.setErrorIconDrawable(R.drawable.ic_error)
+            widgets.errorIcon.visibility = View.VISIBLE
             false
         }
     }
