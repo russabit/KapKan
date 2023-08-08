@@ -193,6 +193,9 @@ class Data {
         HanjaRecord("影", "영", "그림자", listOf("тень")),
         HanjaRecord("片", "편", "조각", listOf("кусочек", "слайс", "остаток")),
         HanjaRecord("街娼", "가창", "-", listOf("проститутка", "ночная бабочка")),
+        // new for test
+        HanjaRecord("訓", "훈", "가르칠",),
+        HanjaRecord("音", "음", "소리", listOf("звук", "новости", "произношение", "разговор")),
     )
 }
 
