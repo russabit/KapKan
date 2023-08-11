@@ -12,4 +12,5 @@ class WidgetHolder(mainActivity: MainActivity) {
     val hundokTextView = mainActivity.findViewById<TextView>(R.id.hundok)
     val translationTextView = mainActivity.findViewById<TextView>(R.id.translation)
     val answerEditText = mainActivity.findViewById<TextInputLayout>(R.id.answer_edit_text)
+    val hanjaTextView = mainActivity.findViewById<TextView>(R.id.written_number_text_view)
 }
