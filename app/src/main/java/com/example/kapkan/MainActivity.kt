@@ -37,28 +37,6 @@ class MainActivity : AppCompatActivity() {
         showHint(5)
     }
 
-    /* //Вариант 1
-
- //        Handler(Looper.getMainLooper()).postDelayed({ // вроде не блокирует осн поток
- //            widgets.hanjaTextView.text = "Skirda"
- //        }, 5000)
-
-
-     //Вариант 2
-
- //        runBlocking {   //блокирует осн поток
- //            delay(5000)
- //            widgets.hanjaTextView.text = "Skirda"
- //        }
-
-     //Вариант 3
-
- //        GlobalScope.launch {  //вылетает
- //            delay(3000)
- //            widgets.hanjaTextView.text = "Skirda"
- //        }
-     //   }*/
-
     private fun submitButtonClickListener(
     ) {
 
