@@ -2,7 +2,6 @@ package com.example.kapkan
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,35 +34,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun errorIconClickListener() {
-        widgets.hanjaTextView.text = stateHolder.hanja.koreanSound
-
-        CoroutineScope(Dispatchers.Main).launch {
-            delay(5000)
-            widgets.hanjaTextView.text = stateHolder.hanja.syllable
-        }
+        showHint(5)
     }
 
-   /* //Вариант 1
+    /* //Вариант 1
 
-//        Handler(Looper.getMainLooper()).postDelayed({ // вроде не блокирует осн поток
-//            widgets.hanjaTextView.text = "Skirda"
-//        }, 5000)
+ //        Handler(Looper.getMainLooper()).postDelayed({ // вроде не блокирует осн поток
+ //            widgets.hanjaTextView.text = "Skirda"
+ //        }, 5000)
 
 
-    //Вариант 2
+     //Вариант 2
 
-//        runBlocking {   //блокирует осн поток
-//            delay(5000)
-//            widgets.hanjaTextView.text = "Skirda"
-//        }
+ //        runBlocking {   //блокирует осн поток
+ //            delay(5000)
+ //            widgets.hanjaTextView.text = "Skirda"
+ //        }
 
-    //Вариант 3
+     //Вариант 3
 
-//        GlobalScope.launch {  //вылетает
-//            delay(3000)
-//            widgets.hanjaTextView.text = "Skirda"
-//        }
-    //   }*/
+ //        GlobalScope.launch {  //вылетает
+ //            delay(3000)
+ //            widgets.hanjaTextView.text = "Skirda"
+ //        }
+     //   }*/
 
     private fun submitButtonClickListener(
     ) {
@@ -142,8 +136,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTextView(number: Pair<Int, String>) {
-        val numberTV = findViewById<TextView>(R.id.written_number_text_view)
-        numberTV.text = number.first.toString()
+        widgets.hanjaTextView.text = number.first.toString()
     }
 
     private fun initTextView(hanjaRecord: Data.HanjaRecord) {
@@ -162,8 +155,7 @@ class MainActivity : AppCompatActivity() {
             widgets.answerEditText.error = null
             widgets.answerEditText.editText?.text?.clear()
             stateHolder.numberOfWins++
-            findViewById<TextView>(R.id.number_of_wins).text =
-                stateHolder.numberOfWins.toString()
+            widgets.numberOfWinsTextView.text = stateHolder.numberOfWins.toString()
 
             return true
         } else {
@@ -181,13 +173,21 @@ class MainActivity : AppCompatActivity() {
             widgets.answerEditText.error = null
             widgets.answerEditText.editText?.text?.clear()
             stateHolder.numberOfWins++
-            findViewById<TextView>(R.id.number_of_wins).text =
-                stateHolder.numberOfWins.toString()
+            widgets.numberOfWinsTextView.text = stateHolder.numberOfWins.toString()
             true
         } else {
             widgets.answerEditText.error = "that's not right!"
 
             false
+        }
+    }
+
+    private fun showHint(seconds: Long) {
+        widgets.hanjaTextView.text = stateHolder.hanja.koreanSound
+
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(seconds * 1000)
+            widgets.hanjaTextView.text = stateHolder.hanja.syllable
         }
     }
 
