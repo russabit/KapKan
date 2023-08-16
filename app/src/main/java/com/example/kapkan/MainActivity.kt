@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun errorIconClickListener() {
-        showHint(5)
+        showHint()
     }
 
     private fun submitButtonClickListener(
@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity() {
 
             return true
         } else {
-            widgets.answerEditText.error = "that's not right!"
+            widgets.answerEditText.error = Values.ERROR_MESSAGE
 
             return false
         }
@@ -154,19 +154,26 @@ class MainActivity : AppCompatActivity() {
             widgets.numberOfWinsTextView.text = stateHolder.numberOfWins.toString()
             true
         } else {
-            widgets.answerEditText.error = "that's not right!"
+            widgets.answerEditText.error = Values.ERROR_MESSAGE
 
             false
         }
     }
 
-    private fun showHint(seconds: Long) {
-        widgets.hanjaTextView.text = stateHolder.hanja.koreanSound
-
+    private fun showHint() {
         CoroutineScope(Dispatchers.Main).launch {
-            delay(seconds * 1000)
-            widgets.hanjaTextView.text = stateHolder.hanja.syllable
+            showKoreanSound()
+            delay(Values.HINT_TIMEOUT)
+            showHanja()
         }
+    }
+
+    private fun showKoreanSound() {
+        widgets.hanjaTextView.text = stateHolder.hanja.koreanSound
+    }
+
+    private fun showHanja() {
+        widgets.hanjaTextView.text = stateHolder.hanja.syllable
     }
 
 }
