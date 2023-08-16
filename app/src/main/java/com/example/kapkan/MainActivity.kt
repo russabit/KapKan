@@ -2,12 +2,9 @@ package com.example.kapkan
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         initTextView(stateHolder.number)
         initTextView(stateHolder.hanja)
 
-        widgets.hanjaTextView.setOnClickListener { hanjaTextViewClickListener() }
+        widgets.answerEditText.setErrorIconOnClickListener {errorIconClickListener()}
 
         widgets.fabButton.setOnClickListener {
             fabButtonClickListener()
@@ -34,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun hanjaTextViewClickListener() {
+    private fun errorIconClickListener() {
         Toast.makeText(this, stateHolder.hanja.koreanSound, Toast.LENGTH_SHORT).show()
     }
 
@@ -158,6 +155,7 @@ class MainActivity : AppCompatActivity() {
             true
         } else {
             widgets.answerEditText.error = "that's not right!"
+
             false
         }
     }
