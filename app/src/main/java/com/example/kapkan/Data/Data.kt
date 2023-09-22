@@ -1,4 +1,4 @@
-package com.example.kapkan
+package com.example.kapkan.Data
 
 class Data {
 
@@ -9,12 +9,14 @@ class Data {
         val translationRU: List<Russian> = listOf(),
         /*    val eumhan: Hangul,
 
-            val translationENG: English,*//*
-    val transliterationRU: Russian,
-    val transliterationENG: English,*//*
-    val memoHelpRU: Russian = "",
-    val memoHelpENG: English = "",
-    val tags: Tags*/
+            val translationENG: English,*/
+        /*
+            val transliterationRU: Russian,
+            val transliterationENG: English,*/
+        /*
+            val memoHelpRU: Russian = "",
+            val memoHelpENG: English = "",
+            val tags: Tags*/
     )
 
 
@@ -166,7 +168,11 @@ class Data {
         HanjaRecord("監督", "감독", translationRU = listOf("присмотр")),
         HanjaRecord("作品", "작품", translationRU = listOf("творческая работа")),
         HanjaRecord("友邦", "우방", translationRU = listOf("союзник")),
-        HanjaRecord("綠色", "녹색", translationRU = listOf("зелёный цвет", "зелёный", "зеленый", "зеленый цвет")),
+        HanjaRecord(
+            "綠色",
+            "녹색",
+            translationRU = listOf("зелёный цвет", "зелёный", "зеленый", "зеленый цвет")
+        ),
         HanjaRecord("同一", "동일", translationRU = listOf("идентичность", "одинаковость")),
         HanjaRecord("專門", "전문", translationRU = listOf("спешалти", "специализированный", "спец")),
         HanjaRecord("公", "공", "공평할", listOf("общественное", "государственное")),
@@ -188,13 +194,28 @@ class Data {
         HanjaRecord("此日彼日", "차일피일", "-", listOf("прокрастинация", "откладывание")),
         HanjaRecord("改善", "개선", "-", listOf("улучшение", "реформа")),
         HanjaRecord("世", "세", "인간(人間)", listOf("мир", "поколение")),
-        HanjaRecord("簡", "간", "대쪽", listOf("простой", "несложный", "краткий", "письмо", "выбирать")),
-        HanjaRecord("曲", "곡", "굽을", listOf("согнутый", "скрученный", "изогнутый", "счётн. для музыкальных произведений", "счётн. мелодий")),
+        HanjaRecord(
+            "簡",
+            "간",
+            "대쪽",
+            listOf("простой", "несложный", "краткий", "письмо", "выбирать")
+        ),
+        HanjaRecord(
+            "曲",
+            "곡",
+            "굽을",
+            listOf(
+                "согнутый",
+                "скрученный",
+                "изогнутый",
+                "счётн. для музыкальных произведений",
+                "счётн. мелодий"
+            )
+        ),
         HanjaRecord("影", "영", "그림자", listOf("тень")),
         HanjaRecord("片", "편", "조각", listOf("кусочек", "слайс", "остаток")),
         HanjaRecord("街娼", "가창", "-", listOf("проститутка", "ночная бабочка")),
-        // new for test
-        HanjaRecord("訓", "훈", "가르칠",),
+        HanjaRecord("訓", "훈", "가르칠"),
         HanjaRecord("音", "음", "소리", listOf("звук", "новости", "произношение", "разговор")),
     )
 }
