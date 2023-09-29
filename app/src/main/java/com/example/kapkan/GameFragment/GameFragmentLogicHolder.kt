@@ -1,7 +1,6 @@
 package com.example.kapkan.GameFragment
 
 import android.view.View
-import com.example.kapkan.Data.Data
 import com.example.kapkan.Values
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,22 +24,15 @@ class GameFragmentLogicHolder(
     }
 
     fun submitButtonClickListener(@Suppress("UNUSED_PARAMETER") view: View) {
-        when (stateHolder.state) {
-            StateHolder.Type.HANJA -> if (isHanjaAnswerRight(stateHolder.hanja)) {
-                onSuccessfulAnswer(stateHolder.state)
-            }
 
-            StateHolder.Type.HANJA_SOUND -> if (isHanjaKoreanSoundAnswerRight(stateHolder.hanja)) {
-                onSuccessfulAnswer(stateHolder.state)
-            }
-
-            StateHolder.Type.NATIVE_NUMBERS -> if (isNumberAnswerRight(stateHolder.number)) {
-                onSuccessfulAnswer(stateHolder.state)
-            }
-
-            StateHolder.Type.NUMBER_SOUND -> if (isNumberKoreanSoundAnswerRight(stateHolder.number)) {
-                onSuccessfulAnswer(stateHolder.state)
-            }
+        val answer = when (stateHolder.state) {
+            StateHolder.Type.HANJA -> stateHolder.hanja.koreanSound.trim()
+            StateHolder.Type.HANJA_SOUND -> stateHolder.hanja.syllable.trim()
+            StateHolder.Type.NATIVE_NUMBERS -> stateHolder.number.second.trim()
+            StateHolder.Type.NUMBER_SOUND -> stateHolder.number.first.toString()
+        }
+        if (isAnswerRight(answer)) {
+            onSuccessfulAnswer()
         }
     }
 
@@ -90,22 +82,6 @@ class GameFragmentLogicHolder(
         stateHolder.hintState = StateHolder.HintState.SHOWN_BOTH
     }
 
-    private fun isNumberAnswerRight(number: Pair<Int, String>): Boolean {
-        return isAnswerRight(number.second.trim())
-    }
-
-    private fun isHanjaAnswerRight(hanja: Data.HanjaRecord): Boolean {
-        return isAnswerRight(hanja.koreanSound.trim())
-    }
-
-    private fun isHanjaKoreanSoundAnswerRight(hanja: Data.HanjaRecord): Boolean {
-        return isAnswerRight(hanja.syllable.trim())
-    }
-
-    private fun isNumberKoreanSoundAnswerRight(number: Pair<Int, String>): Boolean {
-        return isAnswerRight(number.first.toString())
-    }
-
     private fun isAnswerRight(answer: String): Boolean {
         return if (readFromEditText() == answer) {
             resetAnswerEditText()
@@ -124,15 +100,18 @@ class GameFragmentLogicHolder(
     }
 
 
-    private fun onSuccessfulAnswer(state: StateHolder.Type) {
-        when (state) {
+    private fun onSuccessfulAnswer() {
+        updateTask()
+        resetHints()
+        initTextView()
+    }
+    private fun updateTask(){
+        when (stateHolder.state) {
             StateHolder.Type.HANJA -> stateHolder.updateHanja()
             StateHolder.Type.HANJA_SOUND -> stateHolder.updateHanja()
             StateHolder.Type.NATIVE_NUMBERS -> stateHolder.updateNumber()
             StateHolder.Type.NUMBER_SOUND -> stateHolder.updateNumber()
         }
-        resetHints()
-        initTextView()
     }
 
     private fun resetHints() {
